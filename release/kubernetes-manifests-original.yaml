@@ -57,6 +57,8 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -125,6 +127,8 @@ spec:
             limits:
               cpu: 200m
               memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -184,6 +188,8 @@ spec:
           limits:
             cpu: 200m
             memory: 450Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -266,6 +272,8 @@ spec:
             limits:
               cpu: 200m
               memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -315,6 +323,8 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -372,6 +382,8 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -428,6 +440,8 @@ spec:
           periodSeconds: 10
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:7070", "-rpc-timeout=5s"]
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -473,11 +487,13 @@ spec:
           value: "100"
         resources:
           requests:
-            cpu: 500m
-            memory: 256Mi
+            cpu: 800m
+            memory: 500Mi
           limits:
-            cpu: 700m
-            memory: 512Mi
+            cpu: 2000m
+            memory: 800Mi
+      nodeSelector:
+        nodetype: load
 ---
 apiVersion: v1
 kind: Service
@@ -534,6 +550,8 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -591,6 +609,8 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -644,6 +664,8 @@ spec:
       volumes:
       - name: redis-data
         emptyDir: {}
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -703,6 +725,8 @@ spec:
           periodSeconds: 15
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:9555"]
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
