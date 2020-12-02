@@ -869,6 +869,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: loadgenerator
+  namespace: test-stefano-load
 spec:
   selector:
     matchLabels:
@@ -908,6 +909,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: loadgenerator
+  namespace: test-stefano-load
 spec:
   type: NodePort
   selector:
