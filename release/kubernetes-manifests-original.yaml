@@ -20,6 +20,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: emailservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -65,6 +66,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: emailservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -78,6 +80,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: checkoutservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -136,6 +139,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: checkoutservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -149,6 +153,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: recommendationservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -198,6 +203,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: recommendationservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -211,6 +217,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -283,6 +290,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: frontend
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -296,6 +304,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: paymentservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -335,6 +344,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: paymentservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -348,6 +358,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: productcatalogservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -395,6 +406,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: productcatalogservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -408,6 +420,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cartservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -450,6 +463,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: cartservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -516,6 +530,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: currencyservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -562,6 +577,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: currencyservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -575,6 +591,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: shippingservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -622,6 +639,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: shippingservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -635,6 +653,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis-cart
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -677,6 +696,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: redis-cart
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -690,6 +710,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: adservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -739,6 +760,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: adservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
