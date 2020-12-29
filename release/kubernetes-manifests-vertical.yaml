@@ -20,6 +20,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: emailservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -57,11 +58,14 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
   name: emailservice-vpa
+  namespace: test-stefano
 spec:
   targetRef:
     apiVersion: "apps/v1"
@@ -83,6 +87,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: emailservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -96,6 +101,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: checkoutservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -146,11 +152,14 @@ spec:
             limits:
               cpu: 200m
               memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
   name: checkoutservice-vpa
+  namespace: test-stefano
 spec:
   targetRef:
     apiVersion: "apps/v1"
@@ -172,6 +181,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: checkoutservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -185,6 +195,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: recommendationservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -226,11 +237,14 @@ spec:
           limits:
             cpu: 200m
             memory: 450Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
   name: recommendationservice-vpa
+  namespace: test-stefano
 spec:
   targetRef:
     apiVersion: "apps/v1"
@@ -252,6 +266,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: recommendationservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -265,6 +280,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -329,11 +345,14 @@ spec:
             limits:
               cpu: 200m
               memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
   name: frontend-vpa
+  namespace: test-stefano
 spec:
   targetRef:
     apiVersion: "apps/v1"
@@ -355,6 +374,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: frontend
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -368,6 +388,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: paymentservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -399,11 +420,14 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
   name: paymentservice-vpa
+  namespace: test-stefano
 spec:
   targetRef:
     apiVersion: "apps/v1"
@@ -425,6 +449,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: paymentservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -438,6 +463,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: productcatalogservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -477,11 +503,14 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
   name: productcatalogservice-vpa
+  namespace: test-stefano
 spec:
   targetRef:
     apiVersion: "apps/v1"
@@ -503,6 +532,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: productcatalogservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -516,6 +546,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cartservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -554,11 +585,14 @@ spec:
           periodSeconds: 10
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:7070", "-rpc-timeout=5s"]
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
   name: cartservice-vpa
+  namespace: test-stefano
 spec:
   targetRef:
     apiVersion: "apps/v1"
@@ -580,6 +614,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: cartservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -593,6 +628,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: currencyservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -631,11 +667,14 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
   name: currencyservice-vpa
+  namespace: test-stefano
 spec:
   targetRef:
     apiVersion: "apps/v1"
@@ -657,6 +696,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: currencyservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -670,6 +710,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: shippingservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -709,11 +750,14 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
   name: shippingservice-vpa
+  namespace: test-stefano
 spec:
   targetRef:
     apiVersion: "apps/v1"
@@ -735,6 +779,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: shippingservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -748,6 +793,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis-cart
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -783,11 +829,14 @@ spec:
       volumes:
       - name: redis-data
         emptyDir: {}
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
   name: redis-cart-vpa
+  namespace: test-stefano
 spec:
   targetRef:
     apiVersion: "apps/v1"
@@ -809,6 +858,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: redis-cart
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -822,6 +872,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: adservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -863,11 +914,14 @@ spec:
           periodSeconds: 15
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:9555"]
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
   name: adservice-vpa
+  namespace: test-stefano
 spec:
   targetRef:
     apiVersion: "apps/v1"
@@ -889,6 +943,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: adservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -902,6 +957,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: loadgenerator
+  namespace: test-stefano-load
 spec:
   selector:
     matchLabels:
@@ -929,16 +985,19 @@ spec:
               value: "100"
           resources:
             requests:
-              cpu: 500m
-              memory: 256Mi
+              cpu: 800m
+              memory: 500Mi
             limits:
-              cpu: 700m
-              memory: 512Mi
+              cpu: 2000m
+              memory: 800Mi
+      nodeSelector:
+        nodetype: load
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: loadgenerator
+  namespace: test-stefano-load
 spec:
   type: NodePort
   selector:

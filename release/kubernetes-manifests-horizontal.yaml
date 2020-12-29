@@ -20,6 +20,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: emailservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -57,24 +58,28 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: emailservice-hpa
+  namespace: test-stefano
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: emailservice
   minReplicas: 1
-  maxReplicas: 10
-  targetCPUUtilizationPercentage: 50
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: emailservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -88,6 +93,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: checkoutservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -138,24 +144,28 @@ spec:
             limits:
               cpu: 200m
               memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: checkoutservice-hpa
+  namespace: test-stefano
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: checkoutservice
   minReplicas: 1
-  maxReplicas: 10
-  targetCPUUtilizationPercentage: 50
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: checkoutservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -169,6 +179,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: recommendationservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -210,24 +221,28 @@ spec:
           limits:
             cpu: 200m
             memory: 450Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: recommendationservice-hpa
+  namespace: test-stefano
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: recommendationservice
   minReplicas: 1
-  maxReplicas: 10
-  targetCPUUtilizationPercentage: 50
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: recommendationservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -241,6 +256,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -305,24 +321,28 @@ spec:
             limits:
               cpu: 200m
               memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: frontend-hpa
+  namespace: test-stefano
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: frontend
   minReplicas: 1
-  maxReplicas: 10
-  targetCPUUtilizationPercentage: 50
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: frontend
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -336,6 +356,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: paymentservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -367,24 +388,28 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: paymentservice-hpa
+  namespace: test-stefano
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: paymentservice
   minReplicas: 1
-  maxReplicas: 10
-  targetCPUUtilizationPercentage: 50
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: paymentservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -398,6 +423,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: productcatalogservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -437,24 +463,28 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: productcatalogservice
+  namespace: test-stefano
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: productcatalogservice
   minReplicas: 1
-  maxReplicas: 10
-  targetCPUUtilizationPercentage: 50
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: productcatalogservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -468,6 +498,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cartservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -506,24 +537,28 @@ spec:
           periodSeconds: 10
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:7070", "-rpc-timeout=5s"]
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: cartservice-hpa
+  namespace: test-stefano
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: cartservice
   minReplicas: 1
-  maxReplicas: 10
-  targetCPUUtilizationPercentage: 50
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: cartservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -537,6 +572,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: currencyservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -575,24 +611,28 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: currencyservice-hpa
+  namespace: test-stefano
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: currencyservice
   minReplicas: 1
-  maxReplicas: 10
-  targetCPUUtilizationPercentage: 50
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: currencyservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -606,6 +646,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: shippingservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -645,24 +686,28 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: shippingservice-hpa
+  namespace: test-stefano
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: shippingservice
   minReplicas: 1
-  maxReplicas: 10
-  targetCPUUtilizationPercentage: 50
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: shippingservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -676,6 +721,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis-cart
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -711,24 +757,28 @@ spec:
       volumes:
       - name: redis-data
         emptyDir: {}
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: redis-cart-hpa
+  namespace: test-stefano
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: redis-cart
   minReplicas: 1
-  maxReplicas: 10
-  targetCPUUtilizationPercentage: 50
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: redis-cart
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -742,6 +792,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: adservice
+  namespace: test-stefano
 spec:
   selector:
     matchLabels:
@@ -783,24 +834,28 @@ spec:
           periodSeconds: 15
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:9555"]
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: adservice-hpa
+  namespace: test-stefano
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: adservice
   minReplicas: 1
-  maxReplicas: 10
-  targetCPUUtilizationPercentage: 50
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: adservice
+  namespace: test-stefano
 spec:
   type: ClusterIP
   selector:
@@ -814,6 +869,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: loadgenerator
+  namespace: test-stefano-load
 spec:
   selector:
     matchLabels:
@@ -841,16 +897,19 @@ spec:
               value: "100"
           resources:
             requests:
-              cpu: 500m
-              memory: 256Mi
+              cpu: 800m
+              memory: 500Mi
             limits:
-              cpu: 700m
-              memory: 512Mi
+              cpu: 2000m
+              memory: 800Mi
+      nodeSelector:
+        nodetype: load
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: loadgenerator
+  namespace: test-stefano-load
 spec:
   type: NodePort
   selector:
