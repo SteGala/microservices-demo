@@ -16,7 +16,7 @@ greenlet==0.4.15          # via gevent
 idna==2.8                 # via requests
 itsdangerous==1.1.0       # via flask
 jinja2==2.11.2            # via flask
-locust==1.0.2             # via -r requirements.in
+locust==1.4.1             # via -r requirements.in
 markupsafe==1.1.0         # via jinja2
 msgpack==1.0.0            # via locust
 psutil==5.7.0             # via locust
