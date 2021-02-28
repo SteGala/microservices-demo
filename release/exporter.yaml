@@ -1,0 +1,59 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: locust-exporter
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: locust-exporter
+  template:
+    metadata:
+      labels:
+        app: locust-exporter
+    spec:
+      containers:
+      - name: exporter
+        image: containersol/locust_exporter
+        args:
+        - "--locust.uri"
+        - "http://loadgenerator.test-stefano-load.svc"
+        resources:
+          requests:
+            cpu: 256m
+            memory: 256Mi
+          limits:
+            cpu: 1
+            memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: locust-exporter
+  namespace: monitoring
+  labels:
+    app: locust-exporter
+spec:
+  type: NodePort
+  selector:
+    app: locust-exporter
+  ports:
+  - name: metrics
+    port: 9646
+    targetPort: 9646
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: locust-exporter
+  namespace: monitoring
+  labels:
+    demo: monitoring 
+spec:
+  selector:
+    matchLabels:
+      app: locust-exporter
+  endpoints:
+  - port: metrics
+    interval: 5s

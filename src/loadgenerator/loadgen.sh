@@ -32,4 +32,4 @@ if test $STATUSCODE -ne 200; then
 fi
 
 # else, run loadgen
-locust --csv=results --host="http://${FRONTEND_ADDR}" --headless 
+locust --host="http://${FRONTEND_ADDR}" 2>&1
