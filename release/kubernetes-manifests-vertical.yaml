@@ -980,7 +980,7 @@ spec:
           image: stegala/loadgenerator:latest
           env:
             - name: FRONTEND_ADDR
-              value: "frontend:80"
+              value: "frontend.test-stefano.svc:80"
             - name: USERS
               value: "100"
           resources:
@@ -1003,7 +1003,7 @@ spec:
   selector:
     app: loadgenerator
   ports:
-    - name: webpage
-      port: 8089
+    - name: http
+      port: 80
       targetPort: 8089
 ---
