@@ -83,27 +83,3 @@ class UserBehavior(TaskSet):
 class WebsiteUser(HttpUser):
     tasks = [UserBehavior]
     wait_time = between(1, 10)
-
-class CustomLoadShape(LoadTestShape):
-
-    time_increase = 1000
-    time_constant = 1600
-    time_decrease = 2450
-    time_limit = 3350
-
-    def tick(self):
-        run_time = self.get_run_time()
-
-        if run_time < self.time_increase:
-            return (math.floor(run_time), 1)
-
-        if run_time < self.time_constant:
-            return (1000, 1)
-
-        if run_time < self.time_decrease:
-            return (1000 - math.floor(run_time - self.time_constant), 1)
-        
-        if run_time < self.time_limit:
-            return (15, 1)
-
-        return None

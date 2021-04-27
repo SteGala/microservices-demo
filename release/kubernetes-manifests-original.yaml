@@ -431,7 +431,7 @@ spec:
             cpu: 300m
             memory: 128Mi
         readinessProbe:
-          initialDelaySeconds: 15
+          initialDelaySeconds: 30
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:7070", "-rpc-timeout=5s"]
         livenessProbe:
@@ -480,8 +480,8 @@ spec:
         ports:
           - name: webpage
             containerPort: 8089
-        image: gcr.io/google-samples/microservices-demo/loadgenerator:v0.2.2
-        #image: stegala/loadgenerator:latest
+       # image: gcr.io/google-samples/microservices-demo/loadgenerator:v0.2.2
+        image: stegala/loadgenerator:dashboard
         imagePullPolicy: Always
         env:
         - name: FRONTEND_ADDR
