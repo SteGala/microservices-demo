@@ -485,7 +485,7 @@ spec:
           - name: webpage
             containerPort: 8089
         #image: gcr.io/google-samples/microservices-demo/loadgenerator:v0.2.2
-        image: stegala/loadgenerator:dashboard
+        image: stegala/loadgenerator:latest
         imagePullPolicy: Always
         env:
         - name: FRONTEND_ADDR

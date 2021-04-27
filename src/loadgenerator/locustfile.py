@@ -88,8 +88,10 @@ class CustomLoadShape(LoadTestShape):
 
     time_increase = 1000
     time_constant = 1600
-    time_decrease = 2450
-    time_limit = 3350
+    time_second_increase = 2600
+    time_second_constant = 3200
+    time_decrease = 4200
+    time_limit = 4800
 
     def tick(self):
         run_time = self.get_run_time()
@@ -100,10 +102,16 @@ class CustomLoadShape(LoadTestShape):
         if run_time < self.time_constant:
             return (1000, 1)
 
+        if run_time < self.time_second_increase:
+            return (1000 + math.floor(run_time - self.time_constant), 1)
+
+        if run_time < self.time_second_constant:
+            return (2000, 1)
+
         if run_time < self.time_decrease:
-            return (1000 - math.floor(run_time - self.time_constant), 1)
+            return (2000 - math.floor(run_time - self.time_second_constant), 1)
         
         if run_time < self.time_limit:
-            return (15, 1)
+            return (1000, 1)
 
         return None

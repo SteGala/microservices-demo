@@ -50,8 +50,6 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
-      nodeSelector:
-        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -64,8 +62,8 @@ spec:
     kind: Deployment
     name: emailservice
   minReplicas: 1
-  maxReplicas: 5
-  targetCPUUtilizationPercentage: 80
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 85
 ---
 apiVersion: v1
 kind: Service
@@ -136,8 +134,6 @@ spec:
             limits:
               cpu: 200m
               memory: 128Mi
-      nodeSelector:
-        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -150,8 +146,8 @@ spec:
     kind: Deployment
     name: checkoutservice
   minReplicas: 1
-  maxReplicas: 5
-  targetCPUUtilizationPercentage: 80
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 85
 ---
 apiVersion: v1
 kind: Service
@@ -213,8 +209,6 @@ spec:
           limits:
             cpu: 200m
             memory: 450Mi
-      nodeSelector:
-        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -227,8 +221,8 @@ spec:
     kind: Deployment
     name: recommendationservice
   minReplicas: 1
-  maxReplicas: 5
-  targetCPUUtilizationPercentage: 80
+  maxReplicas: 15
+  targetCPUUtilizationPercentage: 90
 ---
 apiVersion: v1
 kind: Service
@@ -313,8 +307,6 @@ spec:
             limits:
               cpu: 200m
               memory: 128Mi
-      nodeSelector:
-        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -327,8 +319,8 @@ spec:
     kind: Deployment
     name: frontend
   minReplicas: 1
-  maxReplicas: 5
-  targetCPUUtilizationPercentage: 80
+  maxReplicas: 15
+  targetCPUUtilizationPercentage: 90
 ---
 apiVersion: v1
 kind: Service
@@ -374,8 +366,6 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
-      nodeSelector:
-        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -388,8 +378,8 @@ spec:
     kind: Deployment
     name: paymentservice
   minReplicas: 1
-  maxReplicas: 5
-  targetCPUUtilizationPercentage: 80
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 85
 ---
 apiVersion: v1
 kind: Service
@@ -449,8 +439,6 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
-      nodeSelector:
-        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -463,8 +451,8 @@ spec:
     kind: Deployment
     name: productcatalogservice
   minReplicas: 1
-  maxReplicas: 5
-  targetCPUUtilizationPercentage: 80
+  maxReplicas: 15
+  targetCPUUtilizationPercentage: 85
 ---
 apiVersion: v1
 kind: Service
@@ -523,8 +511,6 @@ spec:
           periodSeconds: 10
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:7070", "-rpc-timeout=5s"]
-      nodeSelector:
-        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -537,8 +523,8 @@ spec:
     kind: Deployment
     name: cartservice
   minReplicas: 1
-  maxReplicas: 5
-  targetCPUUtilizationPercentage: 80
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 85
 ---
 apiVersion: v1
 kind: Service
@@ -597,8 +583,6 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
-      nodeSelector:
-        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -611,8 +595,8 @@ spec:
     kind: Deployment
     name: currencyservice
   minReplicas: 1
-  maxReplicas: 5
-  targetCPUUtilizationPercentage: 80
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 85
 ---
 apiVersion: v1
 kind: Service
@@ -672,8 +656,6 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
-      nodeSelector:
-        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -686,8 +668,8 @@ spec:
     kind: Deployment
     name: shippingservice
   minReplicas: 1
-  maxReplicas: 5
-  targetCPUUtilizationPercentage: 80
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 85
 ---
 apiVersion: v1
 kind: Service
@@ -743,8 +725,6 @@ spec:
       volumes:
       - name: redis-data
         emptyDir: {}
-      nodeSelector:
-        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -757,8 +737,8 @@ spec:
     kind: Deployment
     name: redis-cart
   minReplicas: 1
-  maxReplicas: 5
-  targetCPUUtilizationPercentage: 80
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 85
 ---
 apiVersion: v1
 kind: Service
@@ -820,8 +800,6 @@ spec:
           periodSeconds: 15
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:9555"]
-      nodeSelector:
-        nodetype: app
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -834,8 +812,8 @@ spec:
     kind: Deployment
     name: adservice
   minReplicas: 1
-  maxReplicas: 5
-  targetCPUUtilizationPercentage: 80
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 85
 ---
 apiVersion: v1
 kind: Service
@@ -888,8 +866,6 @@ spec:
             limits:
               cpu: 2000m
               memory: 800Mi
-      nodeSelector:
-        nodetype: load
 ---
 apiVersion: v1
 kind: Service
