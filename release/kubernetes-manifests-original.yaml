@@ -480,7 +480,8 @@ spec:
         ports:
           - name: webpage
             containerPort: 8089
-        image: stegala/loadgenerator:latest
+        image: gcr.io/google-samples/microservices-demo/loadgenerator:v0.2.2
+        #image: stegala/loadgenerator:latest
         imagePullPolicy: Always
         env:
         - name: FRONTEND_ADDR
