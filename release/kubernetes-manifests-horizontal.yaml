@@ -319,7 +319,7 @@ spec:
     kind: Deployment
     name: frontend
   minReplicas: 1
-  maxReplicas: 15
+  maxReplicas: 20
   targetCPUUtilizationPercentage: 90
 ---
 apiVersion: v1
