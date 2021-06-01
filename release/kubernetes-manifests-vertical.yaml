@@ -942,18 +942,12 @@ spec:
             - name: webpage
               containerPort: 8089
           image: stegala/loadgenerator:latest
+          imagePullPolicy: Always
           env:
             - name: FRONTEND_ADDR
               value: "frontend.test-stefano.svc:80"
             - name: USERS
               value: "100"
-          resources:
-            requests:
-              cpu: 800m
-              memory: 500Mi
-            limits:
-              cpu: 2000m
-              memory: 800Mi
 ---
 apiVersion: v1
 kind: Service
@@ -968,4 +962,3 @@ spec:
     - name: http
       port: 80
       targetPort: 8089
----
