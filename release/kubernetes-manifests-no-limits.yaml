@@ -43,6 +43,8 @@ spec:
         #   value: "1"
         - name: DISABLE_PROFILER
           value: "1"
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -106,6 +108,8 @@ spec:
           #   value: "1"
           # - name: JAEGER_SERVICE_ADDR
           #   value: "jaeger-collector:14268"
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -160,6 +164,8 @@ spec:
           value: "1"
         - name: DISABLE_DEBUGGER
           value: "1"
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -237,6 +243,8 @@ spec:
           #   value: "1"
           # - name: JAEGER_SERVICE_ADDR
           #   value: "jaeger-collector:14268"
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -275,6 +283,8 @@ spec:
         env:
         - name: PORT
           value: "50051"
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -327,6 +337,8 @@ spec:
         livenessProbe:
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:3550"]
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -378,6 +390,8 @@ spec:
           periodSeconds: 10
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:7070", "-rpc-timeout=5s"]
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -429,6 +443,8 @@ spec:
         livenessProbe:
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:7000"]
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -481,6 +497,8 @@ spec:
         livenessProbe:
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:50051"]
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -529,6 +547,8 @@ spec:
       volumes:
       - name: redis-data
         emptyDir: {}
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -583,6 +603,8 @@ spec:
           periodSeconds: 15
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:9555"]
+      nodeSelector:
+        nodetype: app
 ---
 apiVersion: v1
 kind: Service
@@ -629,6 +651,8 @@ spec:
           value: "frontend.test-stefano.svc:80"
         - name: USERS
           value: "100"
+      nodeSelector:
+        nodetype: load
 ---
 apiVersion: v1
 kind: Service
