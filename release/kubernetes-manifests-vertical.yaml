@@ -48,7 +48,7 @@ spec:
             cpu: 100m
             memory: 64Mi
           limits:
-            cpu: 200m
+            cpu: 170m
             memory: 128Mi
       nodeSelector:
         nodetype: app
@@ -142,7 +142,7 @@ spec:
               cpu: 100m
               memory: 64Mi
             limits:
-              cpu: 200m
+              cpu: 170m
               memory: 128Mi
       nodeSelector:
         nodetype: app
@@ -227,7 +227,7 @@ spec:
             cpu: 100m
             memory: 220Mi
           limits:
-            cpu: 200m
+            cpu: 170m
             memory: 450Mi
       nodeSelector:
         nodetype: app
@@ -335,7 +335,7 @@ spec:
               cpu: 100m
               memory: 64Mi
             limits:
-              cpu: 200m
+              cpu: 170m
               memory: 128Mi
       nodeSelector:
         nodetype: app
@@ -404,7 +404,7 @@ spec:
             cpu: 100m
             memory: 64Mi
           limits:
-            cpu: 200m
+            cpu: 170m
             memory: 128Mi
       nodeSelector:
         nodetype: app
@@ -487,7 +487,7 @@ spec:
             cpu: 100m
             memory: 64Mi
           limits:
-            cpu: 200m
+            cpu: 170m
             memory: 128Mi
       nodeSelector:
         nodetype: app
@@ -560,7 +560,7 @@ spec:
             cpu: 200m
             memory: 64Mi
           limits:
-            cpu: 300m
+            cpu: 340m
             memory: 128Mi
         #readinessProbe:
         #  initialDelaySeconds: 15
@@ -651,7 +651,7 @@ spec:
             cpu: 100m
             memory: 64Mi
           limits:
-            cpu: 200m
+            cpu: 170m
             memory: 128Mi
       nodeSelector:
         nodetype: app
@@ -734,7 +734,7 @@ spec:
             cpu: 100m
             memory: 64Mi
           limits:
-            cpu: 200m
+            cpu: 170m
             memory: 128Mi
       nodeSelector:
         nodetype: app
@@ -808,9 +808,9 @@ spec:
         resources:
           limits:
             memory: 256Mi
-            cpu: 125m
+            cpu: 170m
           requests:
-            cpu: 70m
+            cpu: 100m
             memory: 200Mi
       volumes:
       - name: redis-data
@@ -888,7 +888,7 @@ spec:
             cpu: 200m
             memory: 180Mi
           limits:
-            cpu: 300m
+            cpu: 340m
             memory: 300Mi
         readinessProbe:
           initialDelaySeconds: 20
