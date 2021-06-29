@@ -56,4 +56,4 @@ spec:
       app: locust-exporter
   endpoints:
   - port: metrics
-    interval: 5s
+    interval: 1s
